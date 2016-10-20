@@ -1,0 +1,35 @@
+%
+% Exercise template (Version 1.0)
+% 
+% Autor: Eleftherios Matois (e.matios@gmail.com) 
+%
+% Inspired by "Exercise template" von Martin Bild (Martin.Bild@student.hu-berlin.de)  
+%
+\input{header}
+
+\begin{document}
+
+\pagenumbering{arabic}
+\include{titlepage}
+
+\tableofcontents
+\thispagestyle{fancy}
+
+%\listoffigures
+%\thispagestyle{fancy}
+
+%\listoftables
+%\thispagestyle{fancy}
+
+
+\clearpage
+
+\onehalfspacing
+
+\bash[stdoutFile=inputs.tex]
+{ for file in exercises/*.tex; do echo "\\input{$file}"; done; } 
+\END
+\input{inputs.tex}
+\clearpage
+
+\end{document}
