@@ -5,12 +5,159 @@
 %
 % Inspired by "Exercise template" von Martin Bild (Martin.Bild@student.hu-berlin.de)  
 %
-\input{header}
+\documentclass[
+	pdftex,              	% PDFTex verwenden
+	a4paper,             	% A4 Papier
+	oneside,             	% Einseitig
+	bibtotocnumbered,   	% Literaturverzeichnis nummeriert einfuegen
+	idxtotoc,            	% Index ins Verzeichnis einfuegen
+	%parskip,        		% Europischer Satz mit abstand zwischen Abstzen
+	parindent,
+	12pt,               	% Groessere Schrift, besser lesbar am Bildschrim
+	liststotoc				% Verzeichnisse ins Literaturverzeichnis
+]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+% Einstellungen der Seitenrnder
+\usepackage[left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,includeheadfoot]{geometry}
+
+%
+% Paket fr die Indexerstellung.
+%
+\usepackage{makeidx}
+
+%
+% Paket fr bersetzungen ins Deutsche
+%
+\usepackage[english]{babel}
+
+%
+% Paket fr Quotes
+%
+\usepackage[babel,german=quotes]{csquotes}
+
+%
+% Paket zum Erweitern der Tabelleneigenschaften
+%
+\usepackage{array}
+
+%
+% Paket um Grafiken einbetten zu knnen
+%
+\usepackage{graphicx}
+
+%
+% Spezielle Schrift im Koma-Script setzen.
+%
+\setkomafont{section}{\normalfont\bfseries}      	 		% Titel mit Normalschrift
+\setkomafont{subsection}{\normalfont\bfseries}      	 	% Titel mit Normalschrift
+\setkomafont{subsubsection}{\normalfont\bfseries}      		% Titel mit Normalschrift
+\setkomafont{caption}{\scriptsize\bfseries} 	    		% Fette Beschriftungen 
+
+\setkomafont{captionlabel}{\normalfont\bfseries}     		% Fette Beschriftungen 
+\setkomafont{pagehead}{\normalfont\itshape}          		% Kursive Seitentitel
+\setkomafont{descriptionlabel}{\normalfont\bfseries} 		% Fette Beschreibungstitel
+
+%
+% Zeilenumbruch bei Bildbeschreibungen.
+%
+\setcapindent{1em}
+
+%
+% mathematische symbole aus dem AMS Paket.
+%
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%
+% Paket um Textteile drehen zu knnen
+%
+\usepackage{rotating}
+
+%
+% Package fr Farben im PDF
+%
+\usepackage{color}
+
+%
+% Paket fuer spezielle PDF features.
+%
+\usepackage[
+	pdfpagemode=UseOutlines,			% Inhaltsverzeichnis anzeigen beim ffnen
+	pdfdisplaydoctitle=true				% Dokumenttitel statt Dateiname anzeigen.
+]{hyperref}
+
+
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+
+%%% 
+% EINSTELLUNGEN
+%%%
+
+%
+% Definieren von eigenen benannten Farben fuer spaetere Verwendung in dem Dokument, definieren wir einzelne benannte Farben.
+%
+\definecolor{LinkColor}{rgb}{0,0,0.5}
+\definecolor{ListingBackground}{rgb}{0.9,0.9,0.9}
+
+%
+% Farbeinstellungen fuer die Links im PDF Dokument.
+%
+\hypersetup{
+	colorlinks=true,				% Aktivieren von farbigen Links im Dokument (keine Rahmen)
+	linkcolor=LinkColor,			% Farbe festlegen.
+	citecolor=LinkColor,			% Farbe festlegen.
+	filecolor=LinkColor,			% Farbe festlegen.
+	menucolor=LinkColor,		% Farbe festlegen.
+	urlcolor=LinkColor,			% Farbe von URL's im Dokument.
+	bookmarksnumbered=true	% Ueberschriftsnummerierung im PDF Inhalt anzeigen.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Kopf- und Fußzeile nach Fancy Header Style 
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+%Linie oben
+\renewcommand{\headrulewidth}{0.5pt}
+%Fu§zeile zentriert
+\fancyfoot[C]{\thepage}
+%Linie unten
+\renewcommand{\footrulewidth}{0pt}
+
+
+%
+% Sonstiges
+%
+\usepackage{rotating}
+\usepackage{lscape} % stellenweises Querformat
+
+\usepackage{tabularx}
+
+\usepackage{bashful}
+
+
+%
+% AKTIONEN
+%
+
+%
+% Index erzeugen.
+%
+\makeindex
+
+\usepackage{setspace}
 
 \begin{document}
 
 \pagenumbering{arabic}
-\include{titlepage}
 
 \tableofcontents
 \thispagestyle{fancy}
@@ -22,7 +169,37 @@
 %\thispagestyle{fancy}
 
 
-\clearpage
+\clearpage\thispagestyle{empty}
+
+	\begin{center}
+	
+   	\Huge \textbf{Ruprecht-Karls-Universität Heidelberg}
+	
+	\vskip 3cm
+	
+	\begin{center}
+        \includegraphics[width=70mm]{../unihei_logo_4c.pdf}
+	\end{center}
+	
+	\vskip 1.5cm
+	
+        \Large \textbf{\input{assignment}}
+	
+  	\vskip 1.25cm
+   	
+	\large submitted by\\
+	
+	\vskip 1ex
+	
+	%\textbf{
+        \input{../names}
+%	}
+
+	\vskip 1cm
+	
+	\today
+
+	\end{center}
 
 \onehalfspacing
 
